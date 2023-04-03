@@ -1,3 +1,5 @@
+#pragma once
+
 class Reflector{
     char contacts[2][13];
     public:
@@ -6,7 +8,6 @@ class Reflector{
     void setReflector(char whichReflector);
     char encrypt(char inChar);
 };
-//Contacts list should be rethought
 const char REFLECTORCONTACTS[4][14] = {
         {"abcdefgijkmtv"},{"yruhqslpxnozw"},//B Reflector
         {"abcdeghklmnqs"},{"fvpjioyrzxwtu"} //C Reflector

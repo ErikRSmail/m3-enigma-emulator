@@ -1,3 +1,11 @@
+#pragma once
+
+#include <string>
+
+#include "Plugboard.h"
+#include "Reflector.h"
+#include "Rotor.h"
+
 class Enigma{
     Plugboard plugboard;
     Rotor leftRotor;
@@ -66,7 +74,7 @@ void Enigma::setRingSettings(int left, int middle, int right){
     rightRotor.notch = rightRotor.notch%26;
 }
 void Enigma::setReflector(char whichReflector){reflector.setReflector(whichReflector);}
-void Enigma::updateRotors(){//need to implement double step...
+void Enigma::updateRotors(){
     rightRotor.offset++;
     if(rightRotor.offset==rightRotor.notch + 1){//check if notch passed before overflow correct
         middleRotor.offset++;

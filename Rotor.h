@@ -1,3 +1,5 @@
+#pragma once
+
 //rotor offsets are managed by enigma rather than the rotors.
 class Rotor{
     char leftContacts[26];
@@ -24,14 +26,14 @@ void Rotor::setRotor(int whichRotor){
     for(int i=0;i<26;i++){
         rightContacts[i]=ROTORCONTACTS[0][i];
         leftContacts[i]=ROTORCONTACTS[whichRotor][i];
-    }//yuck. bad way to set contacts and notches. research better solutions
+    }//yuck
     if(whichRotor==1){notch=16;}
     else if(whichRotor==2){notch=4;}
     else if(whichRotor==3){notch=21;}
     else if(whichRotor==4){notch=9;}
     else if(whichRotor==5){notch=25;}
 }
-Rotor::Rotor(){//default sets window to 0 and rotor to AA BB CC... I think this fixed something at some point but is apparently useless and should be deleted.
+Rotor::Rotor(){
     offset=0;
     for(int i=0;i<26;i++){
         leftContacts[i]=ROTORCONTACTS[0][i];
@@ -48,7 +50,7 @@ char Rotor::rencrypt(char inChar){
     for(int i=0;i<26;i++){//searches left contacts for match and does subsitution
         if(rightContacts[i]==outChar){
             outChar=leftContacts[i];
-            i=26;//intended to exit the seach for matches if a match is found
+            i=26;
         }
     }
     outChar = outChar - offset;
@@ -67,7 +69,7 @@ char Rotor::lencrypt(char inChar){
     for(int i=0;i<26;i++){//searches left contacts for match and does subsitution
         if(leftContacts[i]==outChar){
             outChar=rightContacts[i];
-            i=26;//intended to exit the seach for matches if a match is found
+            i=26;
         }
     }
     outChar = outChar - offset;

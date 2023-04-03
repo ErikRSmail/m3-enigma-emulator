@@ -1,3 +1,5 @@
+#pragma once
+
 class Plugboard{
     char plugs[2][13] ={{0,0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0,0}};
     int numPlugs = 0;
@@ -15,11 +17,11 @@ char Plugboard::encrypt(char inChar){
     for(int i=0;i<13;i++){
         if(plugs[0][i]==inChar){
             outChar=plugs[1][i];
-            break;//intended to end the loop when we find a matching plug
+            break;
         }
         else if(plugs[1][i]==inChar){
             outChar=plugs[0][i];
-            break;//intended to end the loop when we find a matching plug
+            break;
         }
     }
     return outChar;
